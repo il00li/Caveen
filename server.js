@@ -58,6 +58,11 @@ app.get('/api/products', async (req, res) => {
 app.post('/api/products', async (req, res) => {
   const { code, category, title, price, description, image_url } = req.body;
 
+  // التحقق من الحقول المطلوبة
+  if (!code || !category || !title || !price || !image_url) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
   try {
     const result = await pool.query(
       'INSERT INTO products (code, category, title, price, description, image_url) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
@@ -75,7 +80,10 @@ app.delete('/api/products/:code', async (req, res) => {
   const { code } = req.params;
 
   try {
-    await pool.query('DELETE FROM products WHERE code = $1', [code]);
+    const result = await pool.query('DELETE FROM products WHERE code = $1', [code]);
+    if (result.rowCount === 0) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
     res.json({ message: 'Product deleted' });
   } catch (err) {
     console.error(err);
