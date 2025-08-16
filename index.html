@@ -6,7 +6,59 @@
     <title>كافيين | متجر الأزياء</title>
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* محتوى CSS كامل هنا */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        
+        :root {
+            --beige-light: #F5F5F0;
+            --brown-dark: #5D4037;
+            --white: #FFFFFF;
+            --gold-light: #D4AF37;
+            --text-dark: #3E2723;
+            --text-light: #8D6E63;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --border-radius: 10px;
+            --section-padding: 2.5rem;
+            --danger: #e74c3c;
+        }
+        
+        body {
+            background-color: var(--beige-light);
+            color: var(--text-dark);
+            min-height: 100vh;
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.6;
+            padding-top: 110px;
+        }
+        
+        /* ... (بقية محتوى CSS) ... */
+        
+        /* وسائط استجابة للشاشات الكبيرة */
+        @media (min-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+            
+            .product-image {
+                height: 220px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -123,4 +175,4 @@
     
     <script src="client.js"></script>
 </body>
-            </html>
+    </html>
