@@ -4,11 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>كافيين | متجر الأزياء</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="./styles.css">
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
 <body>
-    <!-- كل واجهة المستخدم هنا -->
+    <header class="main-header">
+        <div class="logo">كافيين</div>
+        <div class="tagline">المتجر الرئيسي من تحق</div>
+    </header>
+
+    <main id="app">
+        <!-- سيتم تحميل المنتجات هنا -->
+    </main>
+
+    <script>
+    // إعدادات المتجر
+    const STORE_CONFIG = {
+        whatsapp: "967734607101",
+        telegram: "crazys7",
+        adminCode: "F-S-YA76"
+    };
+
+    // تحميل المنتجات
+    async function loadProducts() {
+        try {
+            const response = await fetch('/api/products');
+            const products = await response.json();
+            
+            document.getElementById('app').innerHTML = `
+                <div class="products-grid">
+                    ${products.map(product => `
+                    <div class="product-card">
+                        <img src="${product.image}" class="product-image">
+                        <div class="product-info">
+                            <h3>${product.name}</h3>
+                            <p>${product.price} ر.ي</p>
+                            <a href="https://wa.me/${STORE_CONFIG.whatsapp}?text=أريد شراء ${product.name}" class="order-btn">
+                                اطلب عبر واتساب
+                            </a>
+                        </div>
+                    </div>
+                    `).join('')}
+                </div>
+            `;
+        } catch (error) {
+            console.error('Error loading products:', error);
+        }
+    }
+
+    // تهيئة الصفحة
+    document.addEventListener('DOMContentLoaded', loadProducts);
+    </script>
 </body>
 </html>
