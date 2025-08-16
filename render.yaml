@@ -2,12 +2,10 @@ services:
   - type: web
     name: caffeine-store
     env: node
-    buildCommand: cd main && chmod +x render-build.sh && ./render-build.sh
-    startCommand: cd main && npm start
+    buildCommand: chmod +x render-build.sh && ./render-build.sh
+    startCommand: npm start
     envVars:
       - key: PORT
         value: 3000
       - key: DATABASE_URL
-        fromDatabase:
-          name: your-db-name
-          property: connectionString
+        value: postgresql://yousu7777_user:jrmM3IU3eTNWFzV1aoYBbx6KYWv1YnAc@dpg-d2fjjfggjchc73fobds0-a/yousu7777
