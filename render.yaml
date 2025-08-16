@@ -9,3 +9,22 @@ services:
         value: 3000
       - key: DATABASE_URL
         value: postgresql://yousu7777_user:jrmM3IU3eTNWFzV1aoYBbx6KYWv1YnAc@dpg-d2fjjfggjchc73fobds0-a/yousu7777
+
+  # إضافة خدمة قاعدة البيانات
+  - type: postgres
+    name: caffeine-store-db
+    plan: free  # أو starter/production حسب احتياجاتك
+    databaseName: caffeine_store
+    user: caffeine_store_user
+    ipAllowList: []
+    initSQLCommands:
+      - |
+        CREATE TABLE products (
+          id SERIAL PRIMARY KEY,
+          code VARCHAR(50) UNIQUE NOT NULL,
+          category VARCHAR(50) NOT NULL,
+          title VARCHAR(255) NOT NULL,
+          price VARCHAR(50) NOT NULL,
+          description TEXT,
+          image_url VARCHAR(255)
+        );
