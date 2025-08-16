@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>كافيين | متجر الأزياء</title>
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -16,16 +15,16 @@
         }
         
         :root {
-            --beige-light: #F5F5F0; /* بيج فاتح - خلفية الموقع */
-            --brown-dark: #5D4037; /* بني داكن - نصوص وأزرار */
-            --white: #FFFFFF; /* أبيض - خلفيات ثانوية */
-            --gold-light: #D4AF37; /* ذهبي فاتح - عناصر بارزة */
-            --text-dark: #3E2723; /* بني داكن للنصوص */
-            --text-light: #8D6E63; /* بني فاتح للنصوص الثانوية */
+            --beige-light: #F5F5F0;
+            --brown-dark: #5D4037;
+            --white: #FFFFFF;
+            --gold-light: #D4AF37;
+            --text-dark: #3E2723;
+            --text-light: #8D6E63;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             --border-radius: 10px;
             --section-padding: 2.5rem;
-            --danger: #e74c3c; /* لون للحذف */
+            --danger: #e74c3c;
         }
         
         body {
@@ -37,13 +36,11 @@
             padding-top: 110px;
         }
         
-        /* تحسينات الخطوط */
         .logo, .section-title, .hero h2 {
             font-family: 'El Messiri', sans-serif;
             font-weight: 700;
         }
         
-        /* Header - متحرك */
         .main-header {
             background-color: var(--beige-light);
             padding: 0.6rem 0;
@@ -76,7 +73,6 @@
             font-weight: 400;
         }
         
-        /* Categories - ثابتة عند التمرير ومصغرة جداً */
         .categories {
             display: flex;
             justify-content: center;
@@ -124,11 +120,10 @@
             color: var(--white);
         }
         
-        .category-btn iconify-icon {
+        .category-btn i {
             font-size: 0.8rem;
         }
         
-        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(245, 245, 240, 0.7), rgba(245, 245, 240, 0.7)), 
                         url('https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80&sharp=30');
@@ -181,7 +176,6 @@
             background-color: #4E342E;
         }
         
-        /* قسم المنتجات */
         .products-section {
             padding: 2rem 1rem;
             max-width: 1400px;
@@ -304,7 +298,6 @@
             background-color: #C19D2E;
         }
         
-        /* زر البحث */
         .search-btn {
             position: fixed;
             bottom: 20px;
@@ -328,7 +321,6 @@
             background-color: #C19D2E;
         }
         
-        /* نافذة البحث */
         .search-modal {
             display: none;
             position: fixed;
@@ -367,7 +359,6 @@
             cursor: pointer;
         }
         
-        /* واجهة الإدارة */
         .admin-panel {
             display: none;
             position: fixed;
@@ -438,7 +429,6 @@
             background-color: #8D6E63 !important;
         }
         
-        /* قائمة المنتجات في الإدارة */
         .admin-products-list {
             margin-top: 2rem;
             background: rgba(255, 255, 255, 0.1);
@@ -482,7 +472,6 @@
             background-color: #c0392b;
         }
         
-        /* واجهة التحقق من الرمز */
         .access-panel {
             display: none;
             position: fixed;
@@ -546,7 +535,6 @@
             display: none;
         }
         
-        /* Footer */
         .footer {
             background-color: var(--brown-dark);
             padding: 2rem 1rem;
@@ -606,7 +594,6 @@
             color: var(--white);
         }
 
-        /* وسائط استجابة للشاشات الكبيرة */
         @media (min-width: 768px) {
             .products-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -625,6 +612,12 @@
                 gap: 2rem;
             }
         }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
     </style>
 </head>
 <body>
@@ -637,19 +630,19 @@
     <!-- Categories - ثابتة ومصغرة جداً -->
     <div class="categories" id="categoriesBar">
         <button class="category-btn active" data-category="all">
-            <iconify-icon icon="mdi:shopping"></iconify-icon>
+            <i class="fas fa-shopping-cart"></i>
             <span>الكل</span>
         </button>
         <button class="category-btn" data-category="men">
-            <iconify-icon icon="mdi:human-male"></iconify-icon>
+            <i class="fas fa-male"></i>
             <span>رجالي</span>
         </button>
         <button class="category-btn" data-category="women">
-            <iconify-icon icon="mdi:human-female"></iconify-icon>
+            <i class="fas fa-female"></i>
             <span>نسائي</span>
         </button>
         <button class="category-btn" data-category="kids">
-            <iconify-icon icon="mdi:baby-face-outline"></iconify-icon>
+            <i class="fas fa-baby"></i>
             <span>أطفال</span>
         </button>
     </div>
@@ -665,13 +658,43 @@
     <section class="products-section" id="products">
         <h2 class="section-title">منتجاتنا المميزة</h2>
         <div class="products-grid" id="productsGrid">
-            <!-- سيتم ملء المنتجات ديناميكياً -->
+            <!-- المنتج 1 -->
+            <div class="product-card" data-category="women" data-code="CFN-1001">
+                <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="فستان نسائي" class="product-image">
+                <span class="product-code">CFN-1001</span>
+                <div class="product-info">
+                    <span class="product-category">نسائي</span>
+                    <h3 class="product-title">فستان صيفي أنيق</h3>
+                    <p class="product-price">14900 ر.ي</p>
+                    <p class="product-desc">فستان صيفي أنيق بتصميم عصري يناسب جميع المناسبات</p>
+                    <a href="https://wa.me/967734607101?text=مرحباً، أريد طلب المنتج: فستان صيفي أنيق (كود: CFN-1001) بسعر 14900 ر.ي" class="order-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        طلب المنتج
+                    </a>
+                </div>
+            </div>
+            
+            <!-- المنتج 2 -->
+            <div class="product-card" data-category="men" data-code="CFN-1002">
+                <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="قميص رجالي" class="product-image">
+                <span class="product-code">CFN-1002</span>
+                <div class="product-info">
+                    <span class="product-category">رجالي</span>
+                    <h3 class="product-title">قميص كاجوال</h3>
+                    <p class="product-price">12900 ر.ي</p>
+                    <p class="product-desc">قميص رجالي بمواصفات عالية الجودة وخامة قطنية</p>
+                    <a href="https://wa.me/967734607101?text=مرحباً، أريد طلب المنتج: قميص كاجوال (كود: CFN-1002) بسعر 12900 ر.ي" class="order-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        طلب المنتج
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
     
     <!-- زر البحث -->
     <div class="search-btn" id="searchBtn">
-        <iconify-icon icon="mdi:magnify" width="24"></iconify-icon>
+        <i class="fas fa-search"></i>
     </div>
     
     <!-- نافذة البحث -->
@@ -689,4 +712,361 @@
             <p style="text-align: center; margin-bottom: 1.5rem;">الرجاء إدخال رمز الوصول للإدارة</p>
             <input type="password" id="accessCode" placeholder="أدخل رمز الوصول">
             <button id="confirmAccessBtn">تأكيد</button>
-            <p class="access-error" 
+            <p class="access-error" id="accessError">الرمز غير صحيح! الرجاء المحاولة مرة أخرى.</p>
+        </div>
+    </div>
+    
+    <!-- واجهة الإدارة -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-form">
+            <h2>إدارة المنتجات</h2>
+            
+            <h3>إضافة منتج جديد</h3>
+            <input type="text" id="productName" placeholder="اسم المنتج">
+            <input type="text" id="productCode" placeholder="كود المنتج (مثال: CFN-1007)">
+            
+            <select id="productCategory">
+                <option value="men">رجالي</option>
+                <option value="women">نسائي</option>
+                <option value="kids">أطفال</option>
+            </select>
+            
+            <input type="text" id="productPrice" placeholder="السعر (مثال: 14900)">
+            <input type="text" id="productImage" placeholder="رابط الصورة">
+            <textarea id="productDesc" placeholder="وصف المنتج"></textarea>
+            
+            <button id="addProductBtn">إضافة المنتج</button>
+            
+            <div class="admin-products-list">
+                <h3>المنتجات الحالية</h3>
+                <div id="currentProductsList">
+                    <!-- سيتم ملء هذه القائمة بالمنتجات الحالية ديناميكياً -->
+                </div>
+            </div>
+            
+            <button id="closeAdminBtn" class="admin-close-btn">إغلاق لوحة الإدارة</button>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="admin-icon" id="adminIcon">
+            <i class="fas fa-cog"></i>
+        </div>
+        <div class="footer-logo">كافيين</div>
+        <div class="social-icons">
+            <a href="https://t.me/crazys7" class="social-icon">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="https://wa.me/967734607101" class="social-icon">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+        <p class="copyright">© 2023 كافيين. جميع الحقوق محفوظة.</p>
+    </footer>
+    
+    <script>
+        // بيانات المنتجات الأولية
+        let products = [
+            {
+                code: "CFN-1001",
+                category: "women",
+                title: "فستان صيفي أنيق",
+                price: "14900",
+                desc: "فستان صيفي أنيق بتصميم عصري يناسب جميع المناسبات",
+                image: "https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+            },
+            {
+                code: "CFN-1002",
+                category: "men",
+                title: "قميص كاجوال",
+                price: "12900",
+                desc: "قميص رجالي بمواصفات عالية الجودة وخامة قطنية",
+                image: "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+            }
+        ];
+
+        // وظيفة لجلب المنتجات من الخادم (محاكاة)
+        async function fetchProducts() {
+            return products;
+        }
+
+        // كود جافاسكريبت للتحكم في ظهور/اختفاء الهيدر عند التمرير
+        let lastScroll = 0;
+        const header = document.getElementById('mainHeader');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                header.classList.remove('hidden');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && !header.classList.contains('hidden')) {
+                header.classList.add('hidden');
+            } else if (currentScroll < lastScroll && header.classList.contains('hidden')) {
+                header.classList.remove('hidden');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // فلترة المنتجات حسب التصنيف
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        let productCards;
+        
+        function renderProducts() {
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = '';
+            
+            products.forEach(product => {
+                const categoryName = {
+                    'men': 'رجالي',
+                    'women': 'نسائي',
+                    'kids': 'أطفال'
+                }[product.category];
+                
+                const productHTML = `
+                <div class="product-card" data-category="${product.category}" data-code="${product.code}">
+                    <img src="${product.image}" alt="${product.title}" class="product-image">
+                    <span class="product-code">${product.code}</span>
+                    <div class="product-info">
+                        <span class="product-category">${categoryName}</span>
+                        <h3 class="product-title">${product.title}</h3>
+                        <p class="product-price">${product.price} ر.ي</p>
+                        <p class="product-desc">${product.desc}</p>
+                        <a href="https://wa.me/967734607101?text=مرحباً، أريد طلب المنتج: ${product.title} (كود: ${product.code}) بسعر ${product.price} ر.ي" class="order-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            طلب المنتج
+                        </a>
+                    </div>
+                </div>
+                `;
+                
+                productsGrid.innerHTML += productHTML;
+            });
+            
+            // تحديث متغير productCards
+            productCards = document.querySelectorAll('.product-card');
+        }
+        
+        function filterProducts(category) {
+            productCards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // إزالة النشط من جميع الأزرار
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                // إضافة النشط للزر المحدد
+                btn.classList.add('active');
+                
+                const category = btn.dataset.category;
+                filterProducts(category);
+            });
+        });
+        
+        // البحث عن المنتجات
+        const searchBtn = document.getElementById('searchBtn');
+        const searchModal = document.getElementById('searchModal');
+        const closeSearch = document.getElementById('closeSearch');
+        const productSearch = document.getElementById('productSearch');
+        
+        searchBtn.addEventListener('click', () => {
+            searchModal.style.display = 'flex';
+        });
+        
+        closeSearch.addEventListener('click', () => {
+            searchModal.style.display = 'none';
+        });
+        
+        productSearch.addEventListener('input', () => {
+            const searchTerm = productSearch.value.trim().toUpperCase();
+            
+            if (searchTerm.length === 0) {
+                productCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+                return;
+            }
+            
+            productCards.forEach(card => {
+                const productCode = card.dataset.code.toUpperCase();
+                if (productCode.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    
+                    // التمرير إلى المنتج المطلوب
+                    if (productCode === searchTerm) {
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+        
+        // نظام النقر الثلاثي للإدارة
+        let clickCount = 0;
+        let clickTimer = 0;
+        
+        document.querySelector('.logo').addEventListener('click', function() {
+            clearTimeout(clickTimer);
+            clickCount++;
+            
+            if (clickCount === 3) {
+                showAccessPanel();
+                clickCount = 0;
+            }
+            
+            clickTimer = setTimeout(() => {
+                clickCount = 0;
+            }, 1000);
+        });
+        
+        // أيقونة الإعدادات في الفوتر
+        document.getElementById('adminIcon').addEventListener('click', function() {
+            showAccessPanel();
+        });
+        
+        // إظهار واجهة التحقق من الرمز
+        function showAccessPanel() {
+            document.getElementById('accessPanel').style.display = 'flex';
+            document.getElementById('accessCode').focus();
+        }
+        
+        // إخفاء واجهة التحقق من الرمز
+        function hideAccessPanel() {
+            document.getElementById('accessPanel').style.display = 'none';
+            document.getElementById('accessCode').value = '';
+            document.getElementById('accessError').style.display = 'none';
+        }
+        
+        // التحقق من صحة الرمز
+        function checkAccessCode() {
+            const accessCode = document.getElementById('accessCode').value;
+            const accessError = document.getElementById('accessError');
+            
+            if (accessCode === "F-S-YA76") {
+                hideAccessPanel();
+                showAdminPanel();
+            } else {
+                accessError.style.display = 'block';
+                // اهتزاز للحقل
+                document.getElementById('accessCode').style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    document.getElementById('accessCode').style.animation = '';
+                }, 500);
+            }
+        }
+        
+        // إظهار واجهة الإدارة
+        function showAdminPanel() {
+            document.getElementById('adminPanel').style.display = 'block';
+            loadCurrentProducts();
+        }
+        
+        // إخفاء واجهة الإدارة
+        function hideAdminPanel() {
+            document.getElementById('adminPanel').style.display = 'none';
+        }
+        
+        // تحميل المنتجات الحالية في واجهة الإدارة
+        function loadCurrentProducts() {
+            const productsList = document.getElementById('currentProductsList');
+            productsList.innerHTML = '';
+            
+            products.forEach(product => {
+                const productItem = document.createElement('div');
+                productItem.className = 'admin-product-item';
+                productItem.innerHTML = `
+                    <div class="admin-product-info">
+                        <div class="admin-product-title">${product.title}</div>
+                        <div class="admin-product-code">${product.code}</div>
+                    </div>
+                    <button class="delete-btn" data-code="${product.code}">حذف</button>
+                `;
+                
+                productsList.appendChild(productItem);
+            });
+            
+            // إضافة مستمعين لأزرار الحذف
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const productCode = this.dataset.code;
+                    deleteProduct(productCode);
+                });
+            });
+        }
+        
+        // حذف منتج
+        function deleteProduct(productCode) {
+            if (confirm(`هل أنت متأكد من رغبتك في حذف المنتج ${productCode}؟`)) {
+                products = products.filter(p => p.code !== productCode);
+                alert(`تم حذف المنتج ${productCode} بنجاح`);
+                renderProducts();
+                loadCurrentProducts();
+            }
+        }
+        
+        // إضافة منتج جديد
+        function addProduct() {
+            const name = document.getElementById('productName').value;
+            const code = document.getElementById('productCode').value;
+            const category = document.getElementById('productCategory').value;
+            const price = document.getElementById('productPrice').value;
+            const image = document.getElementById('productImage').value;
+            const desc = document.getElementById('productDesc').value;
+            
+            if (!name || !code || !price || !image) {
+                alert('الرجاء إدخال جميع البيانات المطلوبة');
+                return;
+            }
+            
+            // التحقق من عدم وجود كود مكرر
+            if (products.some(p => p.code === code)) {
+                alert('كود المنتج موجود مسبقاً! الرجاء استخدام كود مختلف');
+                return;
+            }
+            
+            const newProduct = {
+                code,
+                category,
+                title: name,
+                price,
+                desc,
+                image
+            };
+            
+            products.push(newProduct);
+            
+            // إعادة تعيين الحقول
+            document.getElementById('productName').value = '';
+            document.getElementById('productCode').value = '';
+            document.getElementById('productPrice').value = '';
+            document.getElementById('productImage').value = '';
+            document.getElementById('productDesc').value = '';
+            
+            alert('تمت إضافة المنتج بنجاح!');
+            renderProducts();
+            loadCurrentProducts();
+        }
+        
+        // تهيئة الأحداث
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts();
+            
+            // ربط الأزرار بالوظائف
+            document.getElementById('confirmAccessBtn').addEventListener('click', checkAccessCode);
+            document.getElementById('addProductBtn').addEventListener('click', addProduct);
+            document.getElementById('closeAdminBtn').addEventListener('click', hideAdminPanel);
+        });
+    </script>
+</body>
+    </html> 
