@@ -2,45 +2,35 @@ services:
   - type: web
     name: caffeine-store
     env: node
-    region: frankfurt  # اختر المنطقة المناسبة لك
     buildCommand: |
-      chmod +x render-build.sh
-      ./render-build.sh
+      npm install
+      npm run migrate
     startCommand: npm start
     envVars:
       - key: PORT
         value: 3000
-      - key: NODE_ENV
-        value: production
       - key: DATABASE_URL
-        fromService:
-          type: postgres
-          name: caffeine-store-db
-          property: connectionString
-    plan: free  # اختر الخطة المناسبة: free, starter أو production
-    autoDeploy: true
+        value: postgresql://yousu7777_user:jrmM3IU3eTNWFzV1aoYBbx6KYWv1YnAc@dpg-d2fjjfggjchc73fobds0-a/yousu7777
+      - key: DB_SSL
+        value: "true"
     healthCheckPath: /health
+    autoDeploy: yes
 
   - type: postgres
     name: caffeine-store-db
-    region: frankfurt  # يجب أن تكون نفس منطقة خدمة الويب
     plan: free
     databaseName: caffeine_store
-    user: caffeine_store_user
-    ipAllowList: []  # يسمح بالاتصال من أي مكان
-    initSQLCommands: |
-      CREATE TABLE IF NOT EXISTS products (
-        id SERIAL PRIMARY KEY,
-        code VARCHAR(50) UNIQUE NOT NULL,
-        category VARCHAR(50) NOT NULL,
-        title VARCHAR(255) NOT NULL,
-        price VARCHAR(50) NOT NULL,
-        description TEXT,
-        image_url VARCHAR(255)
-      );
-      
-      INSERT INTO products (code, category, title, price, description, image_url)
-      VALUES 
-        ('P001', 'Beverages', 'Espresso', '$3.99', 'Strong black coffee', 'https://example.com/espresso.jpg'),
-        ('P002', 'Beverages', 'Cappuccino', '$4.50', 'Espresso with steamed milk', 'https://example.com/cappuccino.jpg')
-      ON CONFLICT (code) DO NOTHING;
+    user: caffeine_user
+    initSQLCommands:
+      - |
+        CREATE TABLE IF NOT EXISTS products (
+          id SERIAL PRIMARY KEY,
+          code VARCHAR(50) UNIQUE NOT NULL,
+          category VARCHAR(50) NOT NULL,
+          title VARCHAR(255) NOT NULL,
+          price VARCHAR(50) NOT NULL,
+          description TEXT,
+          image_url VARCHAR(255)
+        );
+        ALTER TABLE products ADD COLUMN IF NOT EXISTS title VARCHAR(255) NOT NULL DEFAULT 'Untitled Product';
+        ALTER TABLE products ADD COLUMN IF NOT EXISTS category VARCHAR(50) NOT NULL DEFAULT 'Uncategorized';
