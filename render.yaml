@@ -7,3 +7,7 @@ services:
     envVars:
       - key: PORT
         value: 3000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: your-db-name  # استبدل باسم قاعدة البيانات الخاصة بك
+          property: connectionString
