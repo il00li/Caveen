@@ -9,18 +9,118 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- باقي الهيدر والهيكل كما هو... -->
-
-    <!-- قسم المنتجات (محدث) -->
+    <!-- Header -->
+    <header class="main-header" id="mainHeader">
+        <div class="logo">كافيين</div>
+        <div class="tagline">المتجر الرئيسية من تحق</div>
+    </header>
+    
+    <!-- Categories -->
+    <div class="categories" id="categoriesBar">
+        <button class="category-btn active" data-category="all">
+            <iconify-icon icon="mdi:shopping"></iconify-icon>
+            <span>الكل</span>
+        </button>
+        <button class="category-btn" data-category="men">
+            <iconify-icon icon="mdi:human-male"></iconify-icon>
+            <span>رجالي</span>
+        </button>
+        <button class="category-btn" data-category="women">
+            <iconify-icon icon="mdi:human-female"></iconify-icon>
+            <span>نسائي</span>
+        </button>
+        <button class="category-btn" data-category="kids">
+            <iconify-icon icon="mdi:baby-face-outline"></iconify-icon>
+            <span>أطفال</span>
+        </button>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>وصيل حديثاً</h2>
+        <p>تسوق أحدث منتجاتنا</p>
+        <a href="#products" class="shop-now-btn">تسوق الآن</a>
+    </section>
+    
+    <!-- Products Section -->
     <section class="products-section" id="products">
         <h2 class="section-title">منتجاتنا المميزة</h2>
-        <div class="products-grid" id="productsContainer">
-            <!-- سيتم ملؤه ديناميكيًا عبر client.js -->
+        <div class="products-grid" id="productsGrid">
+            <!-- سيتم ملء المنتجات ديناميكياً -->
         </div>
     </section>
-
-    <!-- باقي الملف كما هو... -->
-
+    
+    <!-- Search Button -->
+    <div class="search-btn" id="searchBtn">
+        <iconify-icon icon="mdi:magnify" width="24"></iconify-icon>
+    </div>
+    
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <span class="close-search" id="closeSearch">&times;</span>
+        <div class="search-container">
+            <input type="text" id="productSearch" placeholder="ابحث برقم المنتج (مثال: CFN-1001)">
+        </div>
+    </div>
+    
+    <!-- Access Panel -->
+    <div class="access-panel" id="accessPanel">
+        <div class="access-form">
+            <h2>التحقق من الهوية</h2>
+            <p style="text-align: center; margin-bottom: 1.5rem;">الرجاء إدخال رمز الوصول للإدارة</p>
+            <input type="password" id="accessCode" placeholder="أدخل رمز الوصول">
+            <button id="confirmAccessBtn">تأكيد</button>
+            <p class="access-error" id="accessError">الرمز غير صحيح! الرجاء المحاولة مرة أخرى.</p>
+        </div>
+    </div>
+    
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-form">
+            <h2>إدارة المنتجات</h2>
+            
+            <h3>إضافة منتج جديد</h3>
+            <input type="text" id="productName" placeholder="اسم المنتج">
+            <input type="text" id="productCode" placeholder="كود المنتج (مثال: CFN-1007)">
+            
+            <select id="productCategory">
+                <option value="men">رجالي</option>
+                <option value="women">نسائي</option>
+                <option value="kids">أطفال</option>
+            </select>
+            
+            <input type="text" id="productPrice" placeholder="السعر (مثال: 14900)">
+            <input type="text" id="productImage" placeholder="رابط الصورة">
+            <textarea id="productDesc" placeholder="وصف المنتج"></textarea>
+            
+            <button id="addProductBtn">إضافة المنتج</button>
+            
+            <div class="admin-products-list">
+                <h3>المنتجات الحالية</h3>
+                <div id="currentProductsList"></div>
+            </div>
+            
+            <button id="closeAdminBtn" class="admin-close-btn">إغلاق لوحة الإدارة</button>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="admin-icon" id="adminIcon">
+            <iconify-icon icon="mdi:cog" width="24"></iconify-icon>
+        </div>
+        <div class="footer-logo">كافيين</div>
+        <div class="social-icons">
+            <a href="https://t.me/crazys7" class="social-icon">
+                <iconify-icon icon="mdi:telegram"></iconify-icon>
+            </a>
+            <a href="https://wa.me/967734607101" class="social-icon">
+                <iconify-icon icon="mdi:whatsapp"></iconify-icon>
+            </a>
+        </div>
+        <p class="copyright">© 2023 كافيين. جميع الحقوق محفوظة.</p>
+    </footer>
+    
     <script src="client.js"></script>
 </body>
-</html>
+            </html>
