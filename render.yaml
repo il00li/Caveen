@@ -2,29 +2,45 @@ services:
   - type: web
     name: caffeine-store
     env: node
-    buildCommand: chmod +x render-build.sh && ./render-build.sh
+    region: frankfurt  # اختر المنطقة المناسبة لك
+    buildCommand: |
+      chmod +x render-build.sh
+      ./render-build.sh
     startCommand: npm start
     envVars:
       - key: PORT
         value: 3000
+      - key: NODE_ENV
+        value: production
       - key: DATABASE_URL
-        value: postgresql://yousu7777_user:jrmM3IU3eTNWFzV1aoYBbx6KYWv1YnAc@dpg-d2fjjfggjchc73fobds0-a/yousu7777
+        fromService:
+          type: postgres
+          name: caffeine-store-db
+          property: connectionString
+    plan: free  # اختر الخطة المناسبة: free, starter أو production
+    autoDeploy: true
+    healthCheckPath: /health
 
-  # إضافة خدمة قاعدة البيانات
   - type: postgres
     name: caffeine-store-db
-    plan: free  # أو starter/production حسب احتياجاتك
+    region: frankfurt  # يجب أن تكون نفس منطقة خدمة الويب
+    plan: free
     databaseName: caffeine_store
     user: caffeine_store_user
-    ipAllowList: []
-    initSQLCommands:
-      - |
-        CREATE TABLE products (
-          id SERIAL PRIMARY KEY,
-          code VARCHAR(50) UNIQUE NOT NULL,
-          category VARCHAR(50) NOT NULL,
-          title VARCHAR(255) NOT NULL,
-          price VARCHAR(50) NOT NULL,
-          description TEXT,
-          image_url VARCHAR(255)
-        );
+    ipAllowList: []  # يسمح بالاتصال من أي مكان
+    initSQLCommands: |
+      CREATE TABLE IF NOT EXISTS products (
+        id SERIAL PRIMARY KEY,
+        code VARCHAR(50) UNIQUE NOT NULL,
+        category VARCHAR(50) NOT NULL,
+        title VARCHAR(255) NOT NULL,
+        price VARCHAR(50) NOT NULL,
+        description TEXT,
+        image_url VARCHAR(255)
+      );
+      
+      INSERT INTO products (code, category, title, price, description, image_url)
+      VALUES 
+        ('P001', 'Beverages', 'Espresso', '$3.99', 'Strong black coffee', 'https://example.com/espresso.jpg'),
+        ('P002', 'Beverages', 'Cappuccino', '$4.50', 'Espresso with steamed milk', 'https://example.com/cappuccino.jpg')
+      ON CONFLICT (code) DO NOTHING;
